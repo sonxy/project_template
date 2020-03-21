@@ -1,12 +1,12 @@
-package com.maiyata.common.error;
+package com.realcan.common.error;
 
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
-import com.maiyata.common.api.BaseResponse;
-import com.maiyata.common.api.ResultCode;
+import com.realcan.common.api.BaseResponse;
+import com.realcan.common.api.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -24,7 +24,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
  * @Author: fei.wu
- * @Email: fei.wu@rograndec.com
+ * @Email:
  * @CreateDate: 2019-11-11
  * @Version: 1.0
  */
@@ -129,6 +129,16 @@ public class GlobalExceptionTranslator {
         return BaseResponse
                 .builder()
                 .code(ResultCode.MEDIA_TYPE_NOT_SUPPORTED)
+                .message(e.getMessage())
+                .build();
+    }
+
+    @ExceptionHandler(java.sql.SQLException.class)
+    public BaseResponse handleError(java.sql.SQLException e){
+        log.error("SQL Exception", e);
+        return BaseResponse
+                .builder()
+                .code(ResultCode.FAILURE)
                 .message(e.getMessage())
                 .build();
     }

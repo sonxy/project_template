@@ -1,4 +1,4 @@
-package com.maiyata.common.api;
+package com.realcan.common.api;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @Author: fei.wu
- * @Email: fei.wu@rograndec.com
+ * @Email:
  * @CreateDate: 2019-11-09
  * @Version: 1.0
  */

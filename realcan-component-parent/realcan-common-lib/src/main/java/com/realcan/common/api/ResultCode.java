@@ -1,4 +1,4 @@
-package com.maiyata.common.api;
+package com.realcan.common.api;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,7 +8,7 @@ import lombok.Getter;
 
 /**
  * @Author: fei.wu
- * @Email: fei.wu@rograndec.com
+ * @Email:
  * @CreateDate: 2019-11-09
  * @Version: 1.0
  */
@@ -39,7 +39,11 @@ public enum ResultCode {
 
     PARAM_BIND_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Binding Error"),
 
-    PARAM_VALID_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Validation Error");
+    PARAM_VALID_ERROR(HttpServletResponse.SC_BAD_REQUEST, "Parameter Validation Error"),
+    
+    REPETITIVE_OPERATION(1100, "repetitive operation"),
+    
+    NEED_CAPTCHA(1000,"需要图形验证码");
 
     final int code;
 

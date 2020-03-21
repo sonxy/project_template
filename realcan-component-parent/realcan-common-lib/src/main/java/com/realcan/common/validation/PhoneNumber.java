@@ -1,4 +1,4 @@
-package com.maiyata.common.validation;
+package com.realcan.common.validation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -10,7 +10,7 @@ import javax.validation.Constraint;
 
 /**
  * @Author: fei.wu
- * @Email: fei.wu@rograndec.com
+ * @Email:
  * @CreateDate: 2019-11-11
  * @Version: 1.0
  */

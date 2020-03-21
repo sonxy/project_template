@@ -23,9 +23,10 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.1.BUILD-SNAPSHOT</spring-cloud-alibaba.version>
-        <lombok.version>1.16.8</lombok.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
+        <lombok.version>1.18.4</lombok.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sikpTests>true</sikpTests>
     </properties>
@@ -49,10 +50,24 @@
                 <scope>import</scope>
             </dependency>
 
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.6</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

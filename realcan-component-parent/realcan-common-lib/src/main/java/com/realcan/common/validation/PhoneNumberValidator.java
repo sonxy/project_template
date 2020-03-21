@@ -1,11 +1,11 @@
-package com.maiyata.common.validation;
+package com.realcan.common.validation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
  * @Author: fei.wu
- * @Email: fei.wu@rograndec.com
+ * @Email:
  * @CreateDate: 2019-11-11
  * @Version: 1.0
  */

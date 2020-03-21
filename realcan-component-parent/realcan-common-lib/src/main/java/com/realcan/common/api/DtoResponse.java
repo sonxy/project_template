@@ -1,4 +1,4 @@
-package com.maiyata.common.api;
+package com.realcan.common.api;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -9,7 +9,7 @@ import lombok.ToString;
 
 /**
  * @Author: fei.wu
- * @Email: fei.wu@rograndec.com
+ * @Email:
  * @CreateDate: 2019-11-11
  * @Version: 1.0
  */

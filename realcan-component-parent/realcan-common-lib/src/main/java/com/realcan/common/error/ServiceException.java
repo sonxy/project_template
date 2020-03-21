@@ -1,11 +1,11 @@
-package com.maiyata.common.error;
+package com.realcan.common.error;
 
-import com.maiyata.common.api.ResultCode;
+import com.realcan.common.api.ResultCode;
 import lombok.Getter;
 
 /**
  * @Author: fei.wu
- * @Email: fei.wu@rograndec.com
+ * @Email:
  * @CreateDate: 2019-11-11
  * @Version: 1.0
  */
