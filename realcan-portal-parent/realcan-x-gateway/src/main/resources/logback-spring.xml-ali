@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+
+    <appender name="aliyun" class="com.aliyun.openservices.log.logback.LoghubAppender">
+        <!--必选项-->
+        <!-- 账号及网络配置 -->
+        <endpoint>cn-zhangjiakou.log.aliyuncs.com</endpoint>
+        <accessKeyId>LTAIYW6qfaS4nVip</accessKeyId>
+        <accessKeySecret></accessKeySecret>
+
+        <!-- sls 项目配置 -->
+        <project>maiyata</project>
+        <logStore>dev</logStore>
+        <!--必选项 (end)-->
+
+        <!-- 可选项 -->
+        <topic></topic>
+        <source>maiyata-svc</source>
+
+        <!-- 可选项 详见 '参数说明'-->
+        <totalSizeInBytes>104857600</totalSizeInBytes>
+        <maxBlockMs>60000</maxBlockMs>
+        <ioThreadCount>8</ioThreadCount>
+        <batchSizeThresholdInBytes>524288</batchSizeThresholdInBytes>
+        <batchCountThreshold>4096</batchCountThreshold>
+        <lingerMs>2000</lingerMs>
+        <retries>10</retries>
+        <baseRetryBackoffMs>100</baseRetryBackoffMs>
+        <maxRetryBackoffMs>100</maxRetryBackoffMs>
+
+        <!-- 可选项 通过配置 encoder 的 pattern 自定义 log 的格式 -->
+        <encoder>
+            <pattern>%d %-5level [%thread] %logger{0}: %msg</pattern>
+        </encoder>
+
+        <!-- 可选项 设置 time 字段呈现的格式 -->
+        <timeFormat>yyyy-MM-dd'T'HH:mmZ</timeFormat>
+        <!-- 可选项 设置 time 字段呈现的时区 -->
+        <timeZone>UTC</timeZone>
+    </appender>
+
+
+
+    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- On Windows machines setting withJansi to true enables ANSI
+         color code interpretation by the Jansi library. This requires
+         org.fusesource.jansi:jansi:1.8 on the class path.  Note that
+         Unix-based operating systems such as Linux and Mac OS X
+         support ANSI color codes by default. -->
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+        <!--layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout-->
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="ConsoleAppender" />
+    </root>
+    <logger name="com.realcan" additivity="false" level="info">
+        <appender-ref ref="ConsoleAppender"/>
+    </logger>
+</configuration>

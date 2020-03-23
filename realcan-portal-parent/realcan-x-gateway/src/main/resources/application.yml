@@ -1,0 +1,45 @@
+# application.yml
+spring:
+  profiles:
+    active: dev-local
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        # 路由id
+        - id: baidu
+          #目标服务地址
+          uri: https://www.baidu.com
+          # 路由条件
+          predicates:
+          # 路径匹配
+            - Path=/baidu/**
+          # 过滤规则
+          filters:
+            - StripPrefix=1
+
+        - id: sina
+          uri: https://www.sina.com.cn/
+          predicates:
+            - Path=/sina/**
+          filters:
+            - StripPrefix=1
+
+        - id: saas
+          uri: http://localhost:8080/
+          predicates:
+            - Path=/saas/**
+          filters:
+            - StripPrefix=1
+maiyata:
+  jwt:
+    #跳过认证的路由
+    skip-auth-urls:
+      - /baidu
+      - /saas/signup/create
+      - /saas/goods/downLoadTemplate
+      - /saas/file/verifyOSSCallbackRequest
+    #分钟
+    effective-time: 1440
+

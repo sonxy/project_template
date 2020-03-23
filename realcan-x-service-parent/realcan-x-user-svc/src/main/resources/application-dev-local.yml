@@ -1,0 +1,70 @@
+spring:
+  redis:
+    database: 1
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池中的最小空闲连接
+        min-idle: 0
+    # 连接超时时间（毫秒）默认是2000
+    timeout: 5000
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 10
+    minIdle: 3
+    maxIdle: 10
+    maxActive: 50
+    validationQuery: SELECT 1
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间
+    minEvictableIdleTimeMillis: 300000
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters:
+      commons-log.connection-logger-name: stat,wall,log4j
+    logSlowSql: true
+
+druid:
+  loginUsername: admin
+  loginPassword: admin
+  # IP白名单
+  allow: 127.0.0.1
+  # IP黑名单(共同存在时，deny优先于allow)
+  deny: 192.168.1.100
+
+server:
+  port: 8081
+  session-timeout: 60 # session 超时时间(分钟)，默认是30
+  tomcat:
+    accesslog:
+      buffered: true
+      directory: /Volumes/Any/log/tomcat/dev-user-svc
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
