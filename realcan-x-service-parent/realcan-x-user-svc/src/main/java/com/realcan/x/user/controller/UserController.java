@@ -3,6 +3,7 @@ package com.realcan.x.user.controller;
 import javax.validation.Valid;
 
 import com.realcan.common.api.DtoResponse;
+import com.realcan.common.api.ResultCode;
 import com.realcan.x.user.dto.CreateUserRequest;
 import com.realcan.x.user.dto.UserDto;
 import com.realcan.x.user.service.UserService;
@@ -11,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +51,28 @@ public class UserController {
         UserDto userDto = userService.findUserByPhone(phone);
         DtoResponse<UserDto> dtoDtoResponse = new DtoResponse(userDto);
         return dtoDtoResponse;
+    }
+
+    @ApiOperation(value = "验证密码", notes = "验证密码", httpMethod = "GET")
+    @GetMapping(path = "/verifyPassword")
+    DtoResponse<UserDto> verifyPassword(@RequestParam String phone, @RequestParam String password) {
+        DtoResponse<UserDto> dtoResponse = new DtoResponse<>();
+        UserDto userDto = userService.verifyPassword(phone, password);
+        if (userDto == null) {
+            dtoResponse.setCode(ResultCode.FAILURE);
+            dtoResponse.setMessage("账号或者密码错误");
+        } else {
+            dtoResponse.setCode(ResultCode.SUCCESS);
+            dtoResponse.setData(userDto);
+        }
+        return dtoResponse;
+    }
+
+    @ApiOperation(value = "发送短信验证码", notes = "发送短信验证码", httpMethod = "GET")
+    @GetMapping(path = "/sendSmsCaptcha")
+    public DtoResponse<String> sendSmsCaptcha(@RequestParam String phone, @RequestParam String ip, @RequestParam String imgCaptcha) {
+
+        return null;
     }
 
 }
