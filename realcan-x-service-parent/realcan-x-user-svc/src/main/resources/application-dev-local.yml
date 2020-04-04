@@ -1,7 +1,7 @@
 spring:
   redis:
     database: 1
-    host: 127.0.0.1
+    host: i.docker.com
     port: 6379
     jedis:
       pool:
@@ -16,7 +16,7 @@ spring:
     # 连接超时时间（毫秒）默认是2000
     timeout: 5000
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://i.docker.com:3306/test?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
@@ -38,6 +38,10 @@ spring:
     filters:
       commons-log.connection-logger-name: stat,wall,log4j
     logSlowSql: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: i.docker.com:8848
 
 druid:
   loginUsername: admin

@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>realcan-x-user-api</module>
-        <module>realcan-x-user-service</module>
+        <module>realcan-x-user-svc</module>
     </modules>
 
     <parent>
