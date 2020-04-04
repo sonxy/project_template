@@ -20,6 +20,9 @@ server:
       suffix: .log
 
 spring:
+  main:
+    # 解决Bean重复定义问题
+    allow-bean-definition-overriding: true
   redis:
     database: 1
     host: i.docker.com
@@ -40,3 +43,17 @@ spring:
     nacos:
       discovery:
         server-addr: i.docker.com:8848
+
+dubbo:
+  # 配置服务信息
+  application:
+    name: gateway
+    # 禁用QOS同一台机器可能会有端口冲突现象
+    qos-enable: false
+    qos-accept-foreign-ip: false
+  # 配置注册中心
+  registry:
+    address: nacos://i.docker.com:8848
+  # 设置超时时间
+  consumer:
+    timeout: 4000

@@ -14,10 +14,11 @@ import com.realcan.common.validation.PhoneNumber;
 import com.realcan.x.gateway.model.JwtModel;
 import com.realcan.x.gateway.util.JwtUtil;
 import com.realcan.x.user.UserConstant;
+import com.realcan.x.user.api.UserApi;
 import com.realcan.x.user.dto.LoginRequest;
 import com.realcan.x.user.dto.UserDto;
-import com.realcan.x.user.feign.UserApi;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -47,7 +48,7 @@ public class AuthController {
     @Value("${maiyata.jwt.effective-time}")
     private String effectiveTime;
 
-    @Resource
+    @Reference
     private UserApi userApi;
 
     @Autowired

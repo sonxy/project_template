@@ -1,6 +1,7 @@
 package com.realcan.x.user;
 
 import com.realcan.common.error.GlobalExceptionTranslator;
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Import;
  */
 
 @SpringBootApplication
+@EnableDubbo
 @Import({GlobalExceptionTranslator.class})
 @ComponentScan(value = {"com.realcan"})
 @MapperScan(basePackages = {"com.realcan.x.*.dao"})
